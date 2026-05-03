@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historial · Audi A4</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <span class="logo">A4</span>
+    <span>Mi Audi A4</span>
+  </a>
+  <ul class="navbar-links">
+    <li><a href="index.html">Dashboard</a></li>
+    <li><a href="mantenimiento.html">Mantenimiento</a></li>
+    <li><a href="historial.html" class="active">Historial</a></li>
+    <li><a href="costes.html">Costes</a></li>
+    <li><a href="documentos.html">Documentos</a></li>
+  </ul>
+</nav>
+
+<div class="hero compact">
+  <div class="hero-icon">📝</div>
+</div>
+
+<div class="container tight">
+
+  <h1 class="small">Historial de Servicios</h1>
+  <p class="subtitle">Registro de operaciones realizadas y pendientes</p>
+
+  <!-- KPIs HISTORY -->
+  <div class="three-col">
+    <div class="kpi-card">
+      <div class="label">Servicios registrados</div>
+      <div class="value">1</div>
+      <div class="delta">Bujías 2025</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Pendientes verificar</div>
+      <div class="value">3</div>
+      <div class="delta up">Líquido frenos · ITV · Filtros</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Próximo hito</div>
+      <div class="value">90k</div>
+      <div class="delta">~10.500 km de margen</div>
+    </div>
+  </div>
+
+  <!-- DONE -->
+  <div class="section-card">
+    <div class="section-title">✅ Servicios Realizados</div>
+    <table class="maintenance-table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Km</th>
+          <th>Servicio</th>
+          <th>Taller</th>
+          <th>Coste</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025</td>
+          <td>—</td>
+          <td><strong>Cambio bujías incandescencia</strong></td>
+          <td>—</td>
+          <td>—</td>
+          <td>Próximo control hacia 150.000 km</td>
+        </tr>
+        <tr>
+          <td colspan="6" style="text-align:center;color:var(--text-muted);font-style:italic;padding:20px">
+            Añade aquí los servicios anteriores (revisiones oficiales, cambios de aceite, ITV…)
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PENDING -->
+  <div class="section-card">
+    <div class="section-title">⏳ Pendientes / Por Verificar</div>
+    <ul class="notes-list">
+      <li>
+        <span class="tag">URGENTE</span>
+        <div><strong>Verificar fecha último cambio de líquido de frenos.</strong> Si ha pasado +2 años → cambio inmediato. Coste estimado: 40-60€ taller multimarca.</div>
+      </li>
+      <li>
+        <span class="tag">URGENTE</span>
+        <div><strong>Comprobar última ITV.</strong> Coche de 15 años → ITV cada 2 años. Multa por circular sin ITV: 200€ + retirada permiso circulación.</div>
+      </li>
+      <li>
+        <span class="tag">90k km</span>
+        <div><strong>Revisión completa + cambio aceite y filtros.</strong> Margen actual: ~10.500 km. Planificar antes de finales 2026.</div>
+      </li>
+      <li>
+        <span class="tag">100k km</span>
+        <div><strong>Limpieza EGR + admisión.</strong> Operación preventiva típica del 2.0 TDI. Reduce riesgo de fallo costoso.</div>
+      </li>
+      <li>
+        <span class="tag">2027</span>
+        <div><strong>Kit distribución + bomba de agua.</strong> Por tiempo (6 años desde último cambio o desde fabricación). Crítico — fallo = motor destruido.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- CHANGELOG -->
+  <div class="section-card">
+    <div class="section-title">📜 Historial Cronológico</div>
+    <ul class="timeline">
+      <li class="done">
+        <strong>2025 — Cambio bujías incandescencia</strong>
+        <span class="date">Operación preventiva · sin fallos previos</span>
+      </li>
+      <li>
+        <strong>Anterior a 2025</strong>
+        <span class="date">Sin registros previos en este sistema · revisar carpeta de facturas</span>
+      </li>
+      <li class="next">
+        <strong>~Finales 2026 — Revisión 90.000 km (planificada)</strong>
+        <span class="date">Aceite + filtros + diagnóstico</span>
+      </li>
+      <li>
+        <strong>~2027 — Kit distribución completo</strong>
+        <span class="date">Coste estimado: 400–550€ multimarca · 650–900€ oficial</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- TEMPLATE -->
+  <div class="section-card" style="background:var(--card-bg)">
+    <div class="section-title no-border">📋 Cómo registrar un nuevo servicio</div>
+    <p style="font-size:14px;color:var(--text-soft);margin-bottom:12px">
+      Cuando hagas una operación, edita <code style="background:white;padding:2px 6px;border-radius:4px;font-size:12px">historial.html</code> y añade una fila a la tabla con:
+    </p>
+    <div class="info-grid">
+      <div class="info-item"><span class="bullet"></span><div><strong>Fecha</strong> de la operación</div></div>
+      <div class="info-item"><span class="bullet"></span><div><strong>Km</strong> en ese momento</div></div>
+      <div class="info-item"><span class="bullet"></span><div><strong>Servicio</strong> realizado</div></div>
+      <div class="info-item"><span class="bullet"></span><div><strong>Taller</strong> + <strong>coste</strong></div></div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  Mantenimiento Audi A4 B8 · Página personal · Última actualización: Mayo 2026
+</footer>
+
+</body>
+</html>

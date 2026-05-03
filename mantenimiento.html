@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Mantenimiento · Audi A4</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <span class="logo">A4</span>
+    <span>Mi Audi A4</span>
+  </a>
+  <ul class="navbar-links">
+    <li><a href="index.html">Dashboard</a></li>
+    <li><a href="mantenimiento.html" class="active">Mantenimiento</a></li>
+    <li><a href="historial.html">Historial</a></li>
+    <li><a href="costes.html">Costes</a></li>
+    <li><a href="documentos.html">Documentos</a></li>
+  </ul>
+</nav>
+
+<div class="hero compact">
+  <div class="hero-icon">🛠️</div>
+</div>
+
+<div class="container tight">
+
+  <h1 class="small">Plan de Mantenimiento</h1>
+  <p class="subtitle">Intervalos recomendados por componente · Audi A4 B8 · 2.0 TDI</p>
+
+  <!-- LEGEND -->
+  <div class="section-card" style="background:var(--card-bg)">
+    <div style="display:flex;flex-wrap:wrap;gap:14px;font-size:13px;align-items:center">
+      <strong>Estados:</strong>
+      <span><span class="status-badge status-ok">OK</span> En margen</span>
+      <span><span class="status-badge status-soon">Próximo</span> Cambio inminente</span>
+      <span><span class="status-badge status-due">Revisar</span> Acción urgente</span>
+      <span><span class="status-badge status-info">Inspección</span> Revisión visual</span>
+    </div>
+  </div>
+
+  <!-- MAIN TABLE -->
+  <div class="section-card">
+    <div class="section-title">📋 Componentes y Periodicidad</div>
+    <div style="overflow-x:auto">
+    <table class="maintenance-table">
+      <thead>
+        <tr>
+          <th style="width:22%">Componente</th>
+          <th style="width:16%">Intervalo</th>
+          <th style="width:12%">Último</th>
+          <th style="width:14%">Próximo</th>
+          <th style="width:11%">Estado</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Aceite motor + filtro</strong></td>
+          <td>15.000 km / 1 año</td><td>—</td><td>~90.000 km</td>
+          <td><span class="status-badge status-soon">Próximo</span></td>
+          <td>Usar 5W-30 spec VW 507.00</td>
+        </tr>
+        <tr>
+          <td><strong>Filtro de aire</strong></td>
+          <td>60.000 km</td><td>—</td><td>~120.000 km</td>
+          <td><span class="status-badge status-ok">OK</span></td>
+          <td>Inspección visual anual</td>
+        </tr>
+        <tr>
+          <td><strong>Filtro de habitáculo</strong></td>
+          <td>30.000 km / 2 años</td><td>—</td><td>~90.000 km</td>
+          <td><span class="status-badge status-soon">Próximo</span></td>
+          <td>Crítico para A/C</td>
+        </tr>
+        <tr>
+          <td><strong>Filtro combustible</strong></td>
+          <td>60.000 km</td><td>—</td><td>~120.000 km</td>
+          <td><span class="status-badge status-ok">OK</span></td>
+          <td>Diésel: revisar si pierde potencia</td>
+        </tr>
+        <tr>
+          <td><strong>Bujías incandescencia</strong></td>
+          <td>~100.000 km</td><td>2025</td><td>~150.000 km</td>
+          <td><span class="status-badge status-ok">Hecho</span></td>
+          <td>✅ Cambiadas el año pasado</td>
+        </tr>
+        <tr>
+          <td><strong>Líquido de frenos</strong></td>
+          <td>Cada 2 años</td><td>—</td><td>Verificar</td>
+          <td><span class="status-badge status-due">Revisar</span></td>
+          <td>⚠️ Absorbe humedad con tiempo</td>
+        </tr>
+        <tr>
+          <td><strong>Pastillas freno delanteras</strong></td>
+          <td>40.000–70.000 km</td><td>—</td><td>Inspección</td>
+          <td><span class="status-badge status-info">Inspección</span></td>
+          <td>Depende de uso urbano/carretera</td>
+        </tr>
+        <tr>
+          <td><strong>Discos de freno</strong></td>
+          <td>~120.000 km</td><td>—</td><td>~120.000 km</td>
+          <td><span class="status-badge status-ok">OK</span></td>
+          <td>Cambiar con pastillas si al límite</td>
+        </tr>
+        <tr>
+          <td><strong>Correa distribución + bomba</strong></td>
+          <td>180.000 km / 6 años</td><td>—</td><td>180.000 km / 2027</td>
+          <td><span class="status-badge status-soon">Planificar</span></td>
+          <td>🔴 Si rompe = motor destruido</td>
+        </tr>
+        <tr>
+          <td><strong>Correa auxiliar</strong></td>
+          <td>~120.000 km</td><td>—</td><td>~120.000 km</td>
+          <td><span class="status-badge status-ok">OK</span></td>
+          <td>Inspección visual cada revisión</td>
+        </tr>
+        <tr>
+          <td><strong>Aceite cambio (manual)</strong></td>
+          <td>120.000 km</td><td>—</td><td>~120.000 km</td>
+          <td><span class="status-badge status-ok">OK</span></td>
+          <td>Multitronic/CVT: cada 60.000 km</td>
+        </tr>
+        <tr>
+          <td><strong>Refrigerante (G13)</strong></td>
+          <td>Cada 4–5 años</td><td>—</td><td>Verificar</td>
+          <td><span class="status-badge status-info">Revisar</span></td>
+          <td>Rosa/violeta · No mezclar tipos</td>
+        </tr>
+        <tr>
+          <td><strong>Batería</strong></td>
+          <td>5–7 años</td><td>—</td><td>Verificar</td>
+          <td><span class="status-badge status-info">Revisar</span></td>
+          <td>Test carga en cada revisión</td>
+        </tr>
+        <tr>
+          <td><strong>Neumáticos</strong></td>
+          <td>40.000–60.000 km / 6 años</td><td>—</td><td>Según desgaste</td>
+          <td><span class="status-badge status-info">Revisar</span></td>
+          <td>Mín legal 1,6 mm · Rotar cada 10k</td>
+        </tr>
+        <tr>
+          <td><strong>Amortiguadores</strong></td>
+          <td>80.000–120.000 km</td><td>—</td><td>Inspección</td>
+          <td><span class="status-badge status-soon">Próximo</span></td>
+          <td>Estás en rango — inspección</td>
+        </tr>
+        <tr>
+          <td><strong>EGR + admisión (TDI)</strong></td>
+          <td>Limpieza ~100.000 km</td><td>—</td><td>~100.000 km</td>
+          <td><span class="status-badge status-soon">Próximo</span></td>
+          <td>Típico 2.0 TDI con uso urbano</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- TIMELINE + TIPS -->
+  <div class="two-col">
+    <div class="section-card">
+      <div class="section-title">📅 Próximas Acciones</div>
+      <ul class="timeline">
+        <li class="next">
+          <strong>Revisión taller — 90.000 km</strong>
+          <span class="date">Estimado: finales 2026</span>
+        </li>
+        <li>
+          <strong>Cambio aceite + filtros</strong>
+          <span class="date">Junto con la revisión 90k</span>
+        </li>
+        <li class="urgent">
+          <strong>Líquido de frenos</strong>
+          <span class="date">Verificar fecha — máx 2 años</span>
+        </li>
+        <li>
+          <strong>Limpieza EGR / admisión</strong>
+          <span class="date">A partir de 100.000 km</span>
+        </li>
+        <li>
+          <strong>Correa distribución + bomba</strong>
+          <span class="date">Antes de 180.000 km o 2027</span>
+        </li>
+        <li>
+          <strong>ITV</strong>
+          <span class="date">Cada 2 años (turismo +10 años)</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <div class="section-title">💡 Tips Específicos del 2.0 TDI</div>
+      <ul class="notes-list">
+        <li>
+          <span class="tag">ACEITE</span>
+          <div>Spec obligatoria <strong>VW 507.00</strong> (DPF). Marcas: Castrol Edge LL, Mobil 1 ESP, Total Quartz Ineo.</div>
+        </li>
+        <li>
+          <span class="tag">DPF</span>
+          <div>Uso urbano satura el filtro. <strong>1× al mes</strong>: trayecto 30+ min a +2.500 rpm para regeneración.</div>
+        </li>
+        <li>
+          <span class="tag">SÍNTOMAS</span>
+          <div>Vigilar: testigos, ruidos al arrancar en frío, pérdida de potencia, humo blanco/azul.</div>
+        </li>
+        <li>
+          <span class="tag">EGR</span>
+          <div>Obstrucción típica del 2.0 TDI. Limpieza preventiva ahorra reparación cara.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  Mantenimiento Audi A4 B8 · Página personal · Última actualización: Mayo 2026
+</footer>
+
+</body>
+</html>

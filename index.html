@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mantenimiento Audi A4 · Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <span class="logo">A4</span>
+    <span>Mi Audi A4</span>
+  </a>
+  <ul class="navbar-links">
+    <li><a href="index.html" class="active">Dashboard</a></li>
+    <li><a href="mantenimiento.html">Mantenimiento</a></li>
+    <li><a href="historial.html">Historial</a></li>
+    <li><a href="costes.html">Costes</a></li>
+    <li><a href="documentos.html">Documentos</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-icon">🚗</div>
+</div>
+
+<div class="container">
+
+  <h1>Mantenimiento Audi A4</h1>
+  <p class="subtitle">Dashboard general · Última actualización: Mayo 2026</p>
+
+  <!-- KPIs -->
+  <div class="three-col">
+    <div class="kpi-card">
+      <div class="label">Kilometraje actual</div>
+      <div class="value">79.500 <span style="font-size:14px;color:var(--text-muted)">km</span></div>
+      <div class="delta">26% de la vida útil estimada</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Próxima revisión</div>
+      <div class="value">~10.500 <span style="font-size:14px;color:var(--text-muted)">km</span></div>
+      <div class="delta up">90.000 km / finales 2026</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Acciones pendientes</div>
+      <div class="value">3</div>
+      <div class="delta up">Líquido frenos · ITV · Filtros</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section-card">
+    <div class="section-title">🚙 Información del Vehículo</div>
+    <div class="info-grid">
+      <div class="info-item"><span class="bullet"></span><div><strong>Modelo:</strong> Audi A4 (B8) 2011</div></div>
+      <div class="info-item"><span class="bullet"></span><div><strong>Motor:</strong> 2.0 TDI · Diésel</div></div>
+      <div class="info-item"><span class="bullet"></span><div><strong>Aceite:</strong> 5W-30 (VW 507.00)</div></div>
+      <div class="info-item"><span class="bullet"></span><div><strong>Estado:</strong> Usado · 79.500 km</div></div>
+    </div>
+  </div>
+
+  <!-- QUICK INFO + ALERTS -->
+  <div class="two-col">
+    <div class="section-card">
+      <div class="section-title">ℹ️ Quick Info</div>
+
+      <div class="mileage-highlight">
+        <span style="font-size:18px">🔢</span>
+        <div><strong>Kilometraje actual:</strong> 79.500 km <em style="color:var(--text-muted)">— Mayo 2026</em></div>
+      </div>
+
+      <div class="quick-grid">
+        <div class="quick-item"><span class="bullet"></span><div><strong>Próxima ITV:</strong><br>Verificar fecha</div></div>
+        <div class="quick-item"><span class="bullet"></span><div><strong>Próxima revisión:</strong><br>90.000 km / 2026</div></div>
+        <div class="quick-item"><span class="bullet"></span><div><strong>Cambio aceite:</strong><br>Próximo: 90.000 km</div></div>
+        <div class="quick-item"><span class="bullet"></span><div><strong>Bujías:</strong><br>Cambiadas 2025 ✅</div></div>
+        <div class="quick-item"><span class="bullet"></span><div><strong>Líquido frenos:</strong><br>Cada 2 años</div></div>
+        <div class="quick-item"><span class="bullet"></span><div><strong>Distribución:</strong><br>180.000 km / 2027</div></div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-title">⚠️ Alertas</div>
+      <ul class="timeline">
+        <li class="urgent">
+          <strong>Verificar líquido de frenos</strong>
+          <span class="date">Si lleva +2 años, cambio inmediato</span>
+        </li>
+        <li class="urgent">
+          <strong>Comprobar fecha ITV</strong>
+          <span class="date">Coche +10 años · obligatoria cada 2 años</span>
+        </li>
+        <li class="next">
+          <strong>Filtros próximos a cambio</strong>
+          <span class="date">Aceite + polen + combustible al 88%</span>
+        </li>
+        <li>
+          <strong>EGR / admisión</strong>
+          <span class="date">Limpieza sugerida a partir de 100k km</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="section-card">
+    <div class="section-title">📊 Progreso de Componentes Clave</div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px">
+
+      <div>
+        <div style="font-size:13.5px;display:flex;justify-content:space-between;margin-bottom:4px">
+          <strong>Correa distribución</strong>
+          <span style="color:var(--text-muted);font-size:12px">79.500 / 180.000 km</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill ok" style="width:44%"></div></div>
+      </div>
+
+      <div>
+        <div style="font-size:13.5px;display:flex;justify-content:space-between;margin-bottom:4px">
+          <strong>Filtros (próximo cambio)</strong>
+          <span style="color:var(--text-muted);font-size:12px">79.500 / 90.000 km</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill warn" style="width:88%"></div></div>
+      </div>
+
+      <div>
+        <div style="font-size:13.5px;display:flex;justify-content:space-between;margin-bottom:4px">
+          <strong>Bujías incandescencia</strong>
+          <span style="color:var(--text-muted);font-size:12px">Recientes (2025)</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill ok" style="width:8%"></div></div>
+      </div>
+
+      <div>
+        <div style="font-size:13.5px;display:flex;justify-content:space-between;margin-bottom:4px">
+          <strong>Vida del vehículo</strong>
+          <span style="color:var(--text-muted);font-size:12px">15 años · 79.500 km</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill ok" style="width:26%"></div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- QUICK ACCESS -->
+  <div class="three-col">
+    <a href="mantenimiento.html" class="section-card" style="text-decoration:none;display:block;cursor:pointer">
+      <div style="font-size:24px;margin-bottom:8px">🛠️</div>
+      <div style="font-weight:700;margin-bottom:4px">Plan de Mantenimiento</div>
+      <div style="font-size:13px;color:var(--text-muted)">Ver intervalos completos por componente</div>
+    </a>
+    <a href="historial.html" class="section-card" style="text-decoration:none;display:block;cursor:pointer">
+      <div style="font-size:24px;margin-bottom:8px">📝</div>
+      <div style="font-weight:700;margin-bottom:4px">Historial</div>
+      <div style="font-size:13px;color:var(--text-muted)">Registro de servicios realizados</div>
+    </a>
+    <a href="costes.html" class="section-card" style="text-decoration:none;display:block;cursor:pointer">
+      <div style="font-size:24px;margin-bottom:8px">💶</div>
+      <div style="font-weight:700;margin-bottom:4px">Costes</div>
+      <div style="font-size:13px;color:var(--text-muted)">Estimaciones taller multimarca vs oficial</div>
+    </a>
+  </div>
+
+</div>
+
+<footer class="footer">
+  Mantenimiento Audi A4 B8 · Página personal · Última actualización: Mayo 2026
+</footer>
+
+</body>
+</html>
