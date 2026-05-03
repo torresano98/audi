@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mantenimiento Audi A4</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1f2937;
+    --text-soft: #4b5563;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --card-bg: #f9fafb;
+    --highlight: #fef2f2;
+    --highlight-border: #fecaca;
+    --green: #dcfce7;
+    --green-text: #166534;
+    --yellow: #fef3c7;
+    --yellow-text: #92400e;
+    --red: #fee2e2;
+    --red-text: #991b1b;
+    --blue: #dbeafe;
+    --blue-text: #1e40af;
+    --shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    font-size: 15px;
+  }
+
+  .hero {
+    width: 100%;
+    height: 340px;
+    background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.25)),
+                url('https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=2000&q=80')
+                center/cover no-repeat;
+    position: relative;
+  }
+
+  .hero-icon {
+    position: absolute;
+    bottom: -28px;
+    left: 80px;
+    width: 64px;
+    height: 64px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    box-shadow: var(--shadow);
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 80px 80px;
+  }
+
+  h1 {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .welcome {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 32px;
+    cursor: pointer;
+  }
+
+  .welcome::before { content: "▸ "; }
+
+  .section-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    background: white;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .info-item {
+    background: var(--card-bg);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .bullet {
+    width: 8px;
+    height: 8px;
+    background: #1f2937;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .info-item strong {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .mileage-highlight {
+    background: var(--highlight);
+    border: 1px solid var(--highlight-border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mileage-highlight .icon {
+    font-size: 18px;
+  }
+
+  .quick-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .quick-item {
+    background: var(--card-bg);
+    border-radius: 6px;
+    padding: 11px 14px;
+    font-size: 13.5px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .quick-item strong {
+    font-weight: 600;
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+
+  .status-ok { background: var(--green); color: var(--green-text); }
+  .status-soon { background: var(--yellow); color: var(--yellow-text); }
+  .status-due { background: var(--red); color: var(--red-text); }
+  .status-info { background: var(--blue); color: var(--blue-text); }
+
+  .photos-section .section-title { border: none; padding-bottom: 0; margin-bottom: 0; }
+  .photos-section .toggle {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-top: 12px;
+    padding-left: 4px;
+    cursor: pointer;
+  }
+  .photos-section .toggle::before { content: "▸ "; }
+
+  table.maintenance-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin-top: 8px;
+  }
+
+  table.maintenance-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--card-bg);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--text-soft);
+  }
+
+  table.maintenance-table td {
+    padding: 11px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  table.maintenance-table tr:last-child td { border-bottom: none; }
+
+  table.maintenance-table tr:hover td {
+    background: var(--card-bg);
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 6px;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #f59e0b);
+    border-radius: 3px;
+  }
+
+  .progress-fill.warn { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+  .progress-fill.ok { background: #10b981; }
+
+  .timeline {
+    list-style: none;
+    margin-top: 8px;
+  }
+
+  .timeline li {
+    padding: 10px 0 10px 22px;
+    border-left: 2px solid var(--border);
+    margin-left: 6px;
+    position: relative;
+    font-size: 14px;
+  }
+
+  .timeline li::before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    top: 14px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #6b7280;
+  }
+
+  .timeline li.done::before { background: #10b981; border-color: #10b981; }
+  .timeline li.next::before { background: #f59e0b; border-color: #f59e0b; }
+
+  .timeline li strong { display: block; margin-bottom: 2px; }
+  .timeline li span.date { color: var(--text-muted); font-size: 12.5px; }
+
+  .notes-list {
+    list-style: none;
+  }
+
+  .notes-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 14px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .notes-list li:last-child { border-bottom: none; }
+  .notes-list .tag {
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: var(--card-bg);
+    color: var(--text-soft);
+    font-weight: 600;
+    flex-shrink: 0;
+    height: fit-content;
+    margin-top: 1px;
+  }
+
+  @media (max-width: 900px) {
+    .container { padding: 60px 24px; }
+    .info-grid { grid-template-columns: repeat(2, 1fr); }
+    .two-col { grid-template-columns: 1fr; }
+    .quick-grid { grid-template-columns: 1fr; }
+    .hero-icon { left: 24px; }
+    h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-icon">🚗</div>
+</div>
+
+<div class="container">
+
+  <h1>Mantenimiento Audi A4</h1>
+  <p class="welcome">Welcome Message</p>
+
+  <!-- ABOUT THE CAR -->
+  <div class="section-card">
+    <div class="section-title">🚙 Información del Vehículo</div>
+    <div class="info-grid">
+      <div class="info-item"><span class="bullet"></span><div><strong>Modelo:</strong> Audi A4 (B8) 2011</div></div>
+      <div class="info-item"><span class="bullet"></span><div><strong>Motor:</strong> 2.0 TDI / Diésel</div></div>
+      <div class="info-item"><span class="bullet"></span><div><strong>Aceite:</strong> 5W-30</div></div>
+      <div class="info-item"><span class="bullet"></span><div><strong>Estado:</strong> Usado · 79.500 km</div></div>
+    </div>
+  </div>
+
+  <!-- QUICK INFO + PHOTOS -->
+  <div class="two-col">
+    <div class="section-card">
+      <div class="section-title">ℹ️ Quick Info</div>
+
+      <div class="mileage-highlight">
+        <span class="icon">🔢</span>
+        <div><strong>Kilometraje actual:</strong> 79.500 km <em style="color:var(--text-muted)">— última actualización: Mayo 2026</em></div>
+      </div>
+
+      <div class="quick-grid">
+        <div class="quick-item"><span class="bullet"></span><div><strong>Próxima ITV:</strong><br>Revisar vencimiento</div></div>
+        <div class="quick-item"><span class="bullet"></span><div><strong>Próxima revisión taller:</strong><br>90.000 km / 2026</div></div>
+        <div class="quick-item"><span class="bullet"></span><div><strong>Cambio aceite:</strong><br>Último: -- · Próximo: 90.000 km</div></div>
+        <div class="quick-item"><span class="bullet"></span><div><strong>Bujías:</strong><br>Cambiadas en 2025 ✅</div></div>
+        <div class="quick-item"><span class="bullet"></span><div><strong>Líquido frenos:</strong><br>Cada 2 años (independiente del km)</div></div>
+        <div class="quick-item"><span class="bullet"></span><div><strong>Correa distribución:</strong><br>180.000 km / 6 años</div></div>
+      </div>
+    </div>
+
+    <div class="section-card photos-section">
+      <div class="section-title">🚗 Fotos del Coche</div>
+      <p class="toggle">Galería</p>
+
+      <div class="section-title" style="margin-top:18px">💔 Accidentes</div>
+      <p class="toggle">Sin incidentes registrados</p>
+
+      <div class="section-title" style="margin-top:18px">📄 Documentos</div>
+      <p class="toggle">Permiso, seguro, ITV, facturas</p>
+    </div>
+  </div>
+
+  <!-- MAINTENANCE SCHEDULE -->
+  <div class="section-card">
+    <div class="section-title">🛠️ Plan de Mantenimiento por Componente</div>
+    <table class="maintenance-table">
+      <thead>
+        <tr>
+          <th style="width:24%">Componente</th>
+          <th style="width:18%">Intervalo recomendado</th>
+          <th style="width:14%">Último cambio</th>
+          <th style="width:18%">Próximo</th>
+          <th style="width:14%">Estado</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Aceite motor + filtro</strong></td>
+          <td>15.000 km / 1 año</td>
+          <td>—</td>
+          <td>~90.000 km</td>
+          <td><span class="status-badge status-soon">Próximo</span></td>
+          <td>Usar 5W-30 spec VW 507.00</td>
+        </tr>
+        <tr>
+          <td><strong>Filtro de aire</strong></td>
+          <td>60.000 km</td>
+          <td>—</td>
+          <td>~120.000 km</td>
+          <td><span class="status-badge status-ok">OK</span></td>
+          <td>Inspeccionar visualmente cada año</td>
+        </tr>
+        <tr>
+          <td><strong>Filtro de habitáculo (polen)</strong></td>
+          <td>30.000 km / 2 años</td>
+          <td>—</td>
+          <td>~90.000 km</td>
+          <td><span class="status-badge status-soon">Próximo</span></td>
+          <td>Crítico para A/C y alergias</td>
+        </tr>
+        <tr>
+          <td><strong>Filtro combustible</strong></td>
+          <td>60.000 km</td>
+          <td>—</td>
+          <td>~120.000 km</td>
+          <td><span class="status-badge status-ok">OK</span></td>
+          <td>Diesel: revisar antes si hay pérdida de potencia</td>
+        </tr>
+        <tr>
+          <td><strong>Bujías de incandescencia</strong></td>
+          <td>~100.000 km</td>
+          <td>2025</td>
+          <td>~150.000 km</td>
+          <td><span class="status-badge status-ok">Hecho</span></td>
+          <td>✅ Cambiadas el año pasado</td>
+        </tr>
+        <tr>
+          <td><strong>Líquido de frenos</strong></td>
+          <td>Cada 2 años (independiente km)</td>
+          <td>—</td>
+          <td>Verificar fecha último cambio</td>
+          <td><span class="status-badge status-due">Revisar</span></td>
+          <td>⚠️ Crítico — absorbe humedad con el tiempo</td>
+        </tr>
+        <tr>
+          <td><strong>Pastillas de freno (delanteras)</strong></td>
+          <td>40.000–70.000 km</td>
+          <td>—</td>
+          <td>Inspección visual</td>
+          <td><span class="status-badge status-info">Inspección</span></td>
+          <td>Depende del estilo de conducción</td>
+        </tr>
+        <tr>
+          <td><strong>Discos de freno</strong></td>
+          <td>~120.000 km</td>
+          <td>—</td>
+          <td>~120.000 km</td>
+          <td><span class="status-badge status-ok">OK</span></td>
+          <td>Cambiar junto a pastillas si están al límite</td>
+        </tr>
+        <tr>
+          <td><strong>Correa de distribución + bomba agua</strong></td>
+          <td>180.000 km / 6 años</td>
+          <td>—</td>
+          <td>~180.000 km o 2027</td>
+          <td><span class="status-badge status-soon">Planificar</span></td>
+          <td>🔴 Si rompe = motor destruido. Cambiar kit completo (correa + tensores + bomba)</td>
+        </tr>
+        <tr>
+          <td><strong>Correa auxiliar (alternador)</strong></td>
+          <td>~120.000 km</td>
+          <td>—</td>
+          <td>~120.000 km</td>
+          <td><span class="status-badge status-ok">OK</span></td>
+          <td>Inspección visual cada revisión</td>
+        </tr>
+        <tr>
+          <td><strong>Aceite cambio (manual)</strong></td>
+          <td>120.000 km</td>
+          <td>—</td>
+          <td>~120.000 km</td>
+          <td><span class="status-badge status-ok">OK</span></td>
+          <td>Si es Multitronic/CVT: cada 60.000 km</td>
+        </tr>
+        <tr>
+          <td><strong>Refrigerante (anticongelante)</strong></td>
+          <td>Cada 4–5 años</td>
+          <td>—</td>
+          <td>Verificar fecha</td>
+          <td><span class="status-badge status-info">Revisar</span></td>
+          <td>G13 (rosa/violeta). No mezclar tipos</td>
+        </tr>
+        <tr>
+          <td><strong>Batería</strong></td>
+          <td>5–7 años</td>
+          <td>—</td>
+          <td>Verificar fecha fabricación</td>
+          <td><span class="status-badge status-info">Revisar</span></td>
+          <td>Test de carga en cada revisión</td>
+        </tr>
+        <tr>
+          <td><strong>Neumáticos</strong></td>
+          <td>40.000–60.000 km / 6 años máx</td>
+          <td>—</td>
+          <td>Según desgaste</td>
+          <td><span class="status-badge status-info">Revisar</span></td>
+          <td>Rotar cada 10.000 km. Mín legal: 1,6 mm</td>
+        </tr>
+        <tr>
+          <td><strong>Amortiguadores</strong></td>
+          <td>80.000–120.000 km</td>
+          <td>—</td>
+          <td>Inspeccionar a 80k</td>
+          <td><span class="status-badge status-soon">Próximo</span></td>
+          <td>Estás en el rango — inspección recomendada</td>
+        </tr>
+        <tr>
+          <td><strong>EGR + admisión (TDI)</strong></td>
+          <td>Limpieza ~100.000 km</td>
+          <td>—</td>
+          <td>~100.000 km</td>
+          <td><span class="status-badge status-soon">Próximo</span></td>
+          <td>Típico en 2.0 TDI con uso urbano</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="two-col">
+    <div class="section-card">
+      <div class="section-title">📅 Próximas Acciones (Timeline)</div>
+      <ul class="timeline">
+        <li class="next">
+          <strong>Revisión taller — 90.000 km</strong>
+          <span class="date">Estimado: finales 2026 · ~10.500 km de margen</span>
+        </li>
+        <li>
+          <strong>Cambio aceite + filtros</strong>
+          <span class="date">Junto con la revisión de 90.000 km</span>
+        </li>
+        <li>
+          <strong>Líquido de frenos</strong>
+          <span class="date">Verificar última fecha — máx. 2 años</span>
+        </li>
+        <li>
+          <strong>Limpieza EGR / admisión</strong>
+          <span class="date">A partir de 100.000 km</span>
+        </li>
+        <li>
+          <strong>Correa distribución + bomba agua</strong>
+          <span class="date">Antes de 180.000 km o año 2027</span>
+        </li>
+        <li>
+          <strong>ITV</strong>
+          <span class="date">Cada 2 años (turismo +10 años)</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <div class="section-title">📊 Progreso de Vida Útil</div>
+
+      <div style="font-size:13.5px; margin-bottom:14px">
+        <strong>Correa distribución</strong>
+        <div style="display:flex; justify-content:space-between; color:var(--text-muted); font-size:12px; margin-top:4px">
+          <span>79.500 km</span><span>180.000 km</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill ok" style="width:44%"></div></div>
+      </div>
+
+      <div style="font-size:13.5px; margin-bottom:14px">
+        <strong>Filtros (vs próximo cambio)</strong>
+        <div style="display:flex; justify-content:space-between; color:var(--text-muted); font-size:12px; margin-top:4px">
+          <span>79.500</span><span>90.000 km</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill warn" style="width:88%"></div></div>
+      </div>
+
+      <div style="font-size:13.5px; margin-bottom:14px">
+        <strong>Bujías incandescencia</strong>
+        <div style="display:flex; justify-content:space-between; color:var(--text-muted); font-size:12px; margin-top:4px">
+          <span>Recientes (2025)</span><span>~150.000 km</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill ok" style="width:8%"></div></div>
+      </div>
+
+      <div style="font-size:13.5px">
+        <strong>Vida del vehículo</strong>
+        <div style="display:flex; justify-content:space-between; color:var(--text-muted); font-size:12px; margin-top:4px">
+          <span>15 años · 79.500 km</span><span>Vida útil: 300.000+ km</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill ok" style="width:26%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORY / NOTES -->
+  <div class="section-card">
+    <div class="section-title">📝 Historial y Notas</div>
+    <ul class="notes-list">
+      <li>
+        <span class="tag">2025</span>
+        <div><strong>Bujías de incandescencia</strong> — Cambio completo realizado. Próximo control en torno a 150.000 km.</div>
+      </li>
+      <li>
+        <span class="tag">PENDIENTE</span>
+        <div><strong>Verificar fecha último cambio de líquido de frenos</strong> — si lleva más de 2 años, programar cambio inmediato.</div>
+      </li>
+      <li>
+        <span class="tag">PENDIENTE</span>
+        <div><strong>Verificar última ITV</strong> — coche de 15 años, ITV cada 2 años obligatoria.</div>
+      </li>
+      <li>
+        <span class="tag">TIP</span>
+        <div><strong>Aceite 5W-30:</strong> asegúrate de que cumple la especificación <strong>VW 507.00</strong> (motores TDI con DPF). Marcas habituales: Castrol Edge LL, Mobil 1 ESP, Total Quartz Ineo.</div>
+      </li>
+      <li>
+        <span class="tag">TIP</span>
+        <div><strong>Conducción urbana frecuente:</strong> el DPF (filtro de partículas) puede saturarse. Una vez al mes hacer un trayecto de 30+ min a +2.500 rpm para regeneración activa.</div>
+      </li>
+      <li>
+        <span class="tag">TIP</span>
+        <div><strong>Síntomas a vigilar:</strong> testigos en cuadro, ruidos al arrancar en frío, pérdida de potencia, humo azul/blanco, vibraciones al frenar.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- COSTS / WORKSHOP -->
+  <div class="section-card">
+    <div class="section-title">💶 Estimación de Costes (orientativo, España)</div>
+    <table class="maintenance-table">
+      <thead>
+        <tr>
+          <th>Servicio</th>
+          <th>Precio taller multimarca</th>
+          <th>Precio servicio oficial Audi</th>
+          <th>Frecuencia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Cambio aceite + filtros (aceite, aire, polen, combustible)</td><td>120 – 180 €</td><td>250 – 350 €</td><td>Cada año / 15.000 km</td></tr>
+        <tr><td>Revisión completa</td><td>200 – 300 €</td><td>400 – 600 €</td><td>Cada año</td></tr>
+        <tr><td>Líquido de frenos</td><td>40 – 60 €</td><td>80 – 120 €</td><td>Cada 2 años</td></tr>
+        <tr><td>Kit distribución + bomba agua</td><td>400 – 550 €</td><td>650 – 900 €</td><td>180.000 km / 6 años</td></tr>
+        <tr><td>Pastillas freno delanteras</td><td>120 – 180 €</td><td>250 – 350 €</td><td>40–70k km</td></tr>
+        <tr><td>Limpieza EGR/admisión</td><td>150 – 250 €</td><td>350 – 500 €</td><td>~100.000 km</td></tr>
+        <tr><td>ITV (turismo +10 años)</td><td colspan="2">~45 € (Madrid, sin emisiones)</td><td>Cada 2 años</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>
